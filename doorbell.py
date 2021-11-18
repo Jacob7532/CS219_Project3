@@ -1,30 +1,31 @@
+#beginning of code from Freenove tutorial
 import RPi.GPIO as GPIO 
  
-buzzerPin = 11    # define buzzerPin 
-buttonPin = 12    # define buttonPin 
+buzzerPin = 11
+buttonPin = 12
  
-def setup(): 
- GPIO.setmode(GPIO.BOARD)        # use PHYSICAL GPIO Numbering 
- GPIO.setup(buzzerPin, GPIO.OUT)   # set buzzerPin to OUTPUT mode 
- GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)    # set buttonPin to PULL UP 
-INPUT mode 
+def setup():
+ GPIO.setmode(GPIO.BOARD)        
+ GPIO.setup(buzzerPin, GPIO.OUT)
+ GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+INPUT mode
  
 def loop(): 
  while True: 
-  if GPIO.input(buttonPin)==GPIO.LOW: # if button is pressed 
-   GPIO.output(buzzerPin,GPIO.HIGH) # turn on buzzer 
+  if GPIO.input(buttonPin)==GPIO.LOW:
+   GPIO.output(buzzerPin,GPIO.HIGH)
    print ('buzzer turned on >>>') 
   else : # if button is relessed 
-   GPIO.output(buzzerPin,GPIO.LOW) # turn off buzzer 
+   GPIO.output(buzzerPin,GPIO.LOW)
    print ('buzzer turned off <<<') 
  
 def destroy(): 
- GPIO.cleanup()                     # Release all GPIO 
+ GPIO.cleanup()                     
  
-if __name__ == '__main__':     # Program entrance 
+if __name__ == '__main__':
     print ('Program is starting...') 
  setup() 
  try: 
   loop() 
- except KeyboardInterrupt:  # Press ctrl-c to end the program. 
+ except KeyboardInterrupt:
   destroy() 
