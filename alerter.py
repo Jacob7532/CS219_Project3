@@ -1,3 +1,4 @@
+#beginning of code from Freenove tutorial
 import RPi.GPIO as GPIO 
 import time 
 import math 
@@ -44,4 +45,4 @@ if __name__ == '__main__':     # Program entrance
   loop() 
  except KeyboardInterrupt:  # Press ctrl-c to end the program. 
   destroy() 
-  
+  #end of code from Freenove tutorial
