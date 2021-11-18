@@ -3,14 +3,14 @@ import RPi.GPIO as GPIO
 import time 
 import math 
  
-buzzerPin = 11    # define the buzzerPin 
-buttonPin = 12    # define the buttonPin 
+buzzerPin = 11
+buttonPin = 12
  
 def setup(): 
  global p  
- GPIO.setmode(GPIO.BOARD)         # Use PHYSICAL GPIO Numbering 
- GPIO.setup(buzzerPin, GPIO.OUT)   # set RGBLED pins to OUTPUT mode 
- GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)    # Set buttonPin to INPUT 
+ GPIO.setmode(GPIO.BOARD)
+ GPIO.setup(buzzerPin, GPIO.OUT)
+ GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 mode, and pull up to HIGH level, 3.3V 
  p = GPIO.PWM(buzzerPin, 1)  
  p.start(0); 
@@ -25,24 +25,24 @@ def loop():
    print ('alertor turned off <<<') 
 def alertor(): 
  p.start(50) 
- for x in range(0,361):  # Make frequency of the alertor consistent with the sine wave  
-  sinVal = math.sin(x * (math.pi / 180.0))  # calculate the sine value 
-  toneVal = 2000 + sinVal * 500  # Add to the resonant frequency with a Weighted 
-  p.ChangeFrequency(toneVal)  # Change Frequency of PWM to toneVal 
+ for x in range(0,361):
+  sinVal = math.sin(x * (math.pi / 180.0))
+  toneVal = 2000 + sinVal * 500
+  p.ChangeFrequency(toneVal)
   time.sleep(0.001) 
    
 def stopAlertor(): 
   p.stop() 
     
 def destroy(): 
- GPIO.output(buzzerPin, GPIO.LOW)     # Turn off buzzer 
- GPIO.cleanup()                       # Release GPIO resource 
+ GPIO.output(buzzerPin, GPIO.LOW)
+ GPIO.cleanup()
  
-if __name__ == '__main__':     # Program entrance 
+if __name__ == '__main__':
  print ('Program is starting...') 
  setup() 
  try: 
   loop() 
- except KeyboardInterrupt:  # Press ctrl-c to end the program. 
+ except KeyboardInterrupt:
   destroy() 
   #end of code from Freenove tutorial
