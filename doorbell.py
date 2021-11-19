@@ -1,8 +1,8 @@
 #beginning of code from Freenove tutorial
 import RPi.GPIO as GPIO 
  
-buzzerPin = 11
-buttonPin = 12
+buzzerPin = 17
+buttonPin = 18
  
 def setup():
  GPIO.setmode(GPIO.BOARD)        
@@ -15,7 +15,7 @@ def loop():
   if GPIO.input(buttonPin)==GPIO.LOW:
    GPIO.output(buzzerPin,GPIO.HIGH)
    print ('buzzer turned on >>>') 
-  else : # if button is relessed 
+  else :
    GPIO.output(buzzerPin,GPIO.LOW)
    print ('buzzer turned off <<<') 
  
