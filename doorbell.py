@@ -1,14 +1,13 @@
 #beginning of code from Freenove tutorial
 import RPi.GPIO as GPIO 
  
-buzzerPin = 17
-buttonPin = 18
+buzzerPin = 11
+buttonPin = 12
  
 def setup():
  GPIO.setmode(GPIO.BOARD)        
  GPIO.setup(buzzerPin, GPIO.OUT)
  GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-INPUT mode
  
 def loop(): 
  while True: 
