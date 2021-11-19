@@ -3,8 +3,8 @@ import RPi.GPIO as GPIO
 import time 
 import math 
  
-buzzerPin = 11
-buttonPin = 12
+buzzerPin= 17
+buttonPin = 18
  
 def setup(): 
  global p  
